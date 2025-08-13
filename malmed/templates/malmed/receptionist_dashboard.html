@@ -1,0 +1,8 @@
+{% extends "malmed/layout.html" %}
+{% block body %}
+    <h1>Welcome Receptionist {{ user.username }}</h1>
+    <p>This is your dashboard. You can schedule appointments and view patient info.</p>
+    <a href="{% url 'register_patient' %}">Register New Patient</a>
+    <a href="{% url 'schedule_appointment' %}">Schedule Appointment</a>
+
+{% endblock %}

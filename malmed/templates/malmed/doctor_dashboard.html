@@ -1,0 +1,15 @@
+{% extends 'malmed/layout.html' %}
+
+{% block body %}
+    <h1>Doctor Dashboard</h1>
+    <hr>
+    <p>Welcome Dr. {{ user.username }}</p>
+    <h3>Todays Appointments</h3>
+    <ul>
+    {% for appointment in todays_appointments %}
+        <li>{{ appointment.patient.name }} at {{ appointment.appointment_date }}</li>
+    {% empty %}
+        <li>No appointments today!</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

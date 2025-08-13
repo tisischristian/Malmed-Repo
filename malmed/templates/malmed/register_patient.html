@@ -1,0 +1,11 @@
+{% extends "malmed/layout.html" %}
+{% block body %}
+  <h2>Register New Patient</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register Patient</button>
+  </form>
+  <br>
+  <a href="{% url 'receptionist_dashboard' %}">Back to Dashboard</a>
+{% endblock %}

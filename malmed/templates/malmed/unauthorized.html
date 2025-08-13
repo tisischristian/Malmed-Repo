@@ -1,0 +1,9 @@
+{% extends "malmed/layout.html" %}
+
+{% block body %}
+
+    <h1>Access Denied</h1>
+    <p>Sorry {{ user.username }}, you dont have permission to view this page.</p>
+    <a href="{% url 'index' %}">Go back home</a>
+  </div>
+{% endblock %}
