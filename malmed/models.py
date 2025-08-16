@@ -29,6 +29,16 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
     
+    def get_role(self):
+        if self.is_admin:
+            return "Admin"
+        elif self.is_doctor:
+            return "Doctor"
+        elif self.is_receptionist:
+            return "Receptionist"
+        else:
+            return "User"
+    
 # --- Abstract Base Class for Shared Fields ---
 class Person(models.Model):
     name = models.CharField(max_length=100)
@@ -103,7 +113,7 @@ class Patient(Person):
             raise ValidationError("Patient age cannot exceed 150 years.")
 
     def __str__(self):
-        return f"{self.name}, (Age: {self.age})"
+        return f"{self.name} - Age: {self.age}"
     
     class Meta:
         ordering = ['name']
