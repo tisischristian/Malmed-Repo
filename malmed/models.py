@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
@@ -13,6 +14,8 @@ class User(AbstractUser):
     is_receptionist = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
+        if self.password and not self.password.startswith('pbkdf2_'):
+            self.password = make_password(self.password)
         if self.is_superuser:
             self.is_staff = True
             self.is_admin = True

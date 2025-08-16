@@ -1,0 +1,11 @@
+<aside class="sidebar">
+    {% if user.is_receptionist %}
+        <a href="{% url 'receptionist_dashboard' %}">Dashboard</a>
+        <a href="{% url 'register_patient' %}">Register Patient</a>
+        <a href="{% url 'schedule_appointment' %}">Schedule Appointment</a>
+    {% elif user.is_doctor %}
+        <a href="{% url 'doctor_dashboard' %}">Dashboard</a>
+    {% elif user.is_admin %}
+        <a href="{% url 'admin_dashboard' %}">Dashboard</a>
+    {% endif %}
+</aside>

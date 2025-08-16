@@ -1,0 +1,9 @@
+<header class="header">
+    <div class="logo">Malmed CMS</div>
+    {% if user.is_authenticated %}
+    <div class="user-info">
+        <span>Hello, {{ user.username }} ({{ user.get_role }})</span>
+        <a href="{% url 'logout' %}" class="btn-logout">Logout</a>
+    </div>
+    {% endif %}
+</header>

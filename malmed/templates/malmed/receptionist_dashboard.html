@@ -1,8 +1,44 @@
-{% extends "malmed/layout.html" %}
-{% block body %}
-    <h1>Welcome Receptionist {{ user.username }}</h1>
-    <p>This is your dashboard. You can schedule appointments and view patient info.</p>
-    <a href="{% url 'register_patient' %}">Register New Patient</a>
-    <a href="{% url 'schedule_appointment' %}">Schedule Appointment</a>
+{% extends 'malmed/base.html' %}
+{% block title %}Receptionist Dashboard{% endblock %}
 
+{% block content %}
+<h2>Receptionist Dashboard</h2>
+
+<div class="card-container">
+    <div class="card">
+        <h3>Total Appointments</h3>
+        <p>{{ appointments.count }}</p>
+    </div>
+    <div class="card">
+        <h3>Upcoming</h3>
+        <p>{{ appointments|length }}</p>
+    </div>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Date & Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appt in appointments %}
+            <tr>
+                <td>{{ appt.patient.name }}</td>
+                <td>{{ appt.doctor.name }}</td>
+                <td>{{ appt.appointment_date }}</td>
+                <td>{{ appt.status }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No appointments scheduled.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

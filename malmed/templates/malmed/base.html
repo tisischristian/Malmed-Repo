@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Malmed CMS{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'malmed/css/styles.css' %}">
+</head>
+<body>
+    {% include 'malmed/header.html' %}
+    <div class="container">
+        {% include 'malmed/sidebar.html' %}
+        <main class="main-content">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

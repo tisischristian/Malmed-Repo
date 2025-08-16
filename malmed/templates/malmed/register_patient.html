@@ -1,11 +1,53 @@
-{% extends "malmed/layout.html" %}
-{% block body %}
-  <h2>Register New Patient</h2>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register Patient</button>
-  </form>
-  <br>
-  <a href="{% url 'receptionist_dashboard' %}">Back to Dashboard</a>
+{% extends 'malmed/base.html' %}
+{% block content %}
+<div class="form-card">
+    <h2>Register Patient</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.email_address.label_tag }}
+            {{ form.email_address }}
+            {{ form.email_address.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.contact_number.label_tag }}
+            {{ form.contact_number }}
+            {{ form.contact_number.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.address.label_tag }}
+            {{ form.address }}
+            {{ form.address.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.gender.label_tag }}
+            {{ form.gender }}
+            {{ form.gender.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.date_of_birth.label_tag }}
+            {{ form.date_of_birth }}
+            {{ form.date_of_birth.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.emergency_contact.label_tag }}
+            {{ form.emergency_contact }}
+            {{ form.emergency_contact.errors }}
+        </div>
+
+        <button type="submit" class="btn-submit">Submit</button>
+    </form>
+</div>
 {% endblock %}
